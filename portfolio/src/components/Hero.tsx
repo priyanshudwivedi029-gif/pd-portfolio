@@ -5,7 +5,7 @@ import { SiGithub } from 'react-icons/si';
 import { Linkedin } from 'lucide-react';
 import { Download, ArrowRight, Mail } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import abstractImage from '@/assets/hero-abstract.png';
+import profileImage from '@/assets/profile.jpg';
 
 export default function Hero() {
   const { toast } = useToast();
@@ -75,17 +75,25 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="hidden lg:block relative"
+          className="relative mt-8 lg:mt-0"
         >
-          <div className="aspect-square relative max-w-md mx-auto">
-            <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl" />
-            {abstractImage && (
+          <div className="relative aspect-[3/4] max-w-sm mx-auto group">
+            {/* Ambient Glow */}
+            <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-primary/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition duration-500" />
+            
+            {/* Main Image Container */}
+            <div className="relative w-full h-full rounded-3xl overflow-hidden border border-border bg-card shadow-2xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-primary/30">
               <img 
-                src={abstractImage} 
-                alt="Abstract technological representation" 
-                className="relative z-10 w-full h-full object-contain drop-shadow-2xl"
+                src={profileImage} 
+                alt="Priyanshu Dwivedi" 
+                className="w-full h-full object-cover object-center"
               />
-            )}
+              {/* Subtle Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent" />
+            </div>
+            
+            {/* Decorative back layer */}
+            <div className="absolute -bottom-4 -right-4 w-full h-full border border-primary/20 rounded-3xl -z-10 transition-all duration-500 group-hover:translate-x-1 group-hover:translate-y-1" />
           </div>
         </motion.div>
       </div>
