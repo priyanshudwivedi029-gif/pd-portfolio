@@ -28,26 +28,29 @@ export default function Contact() {
             </a>
           </Button>
 
-          <div className="grid md:grid-cols-3 gap-8 pt-12 border-t border-border/60 text-left">
-            <div className="flex flex-col items-center md:items-start text-center md:text-left p-4">
-              <MapPin className="w-6 h-6 text-primary mb-3.5" />
-              <h4 className="font-bold text-foreground mb-1.5">Location</h4>
-              <p className="text-muted-foreground text-sm leading-normal">Lucknow, Uttar Pradesh<br/>India</p>
+          <div className="grid md:grid-cols-3 gap-6 pt-12 border-t border-white/[0.06] text-left">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left p-6 rounded-2xl glass-panel shadow-xl hover-glow-card relative overflow-hidden group">
+              <div className="absolute -right-6 -top-6 w-16 h-16 bg-primary/10 rounded-full blur-lg pointer-events-none" />
+              <MapPin className="w-6 h-6 text-primary mb-4 group-hover:scale-110 transition-transform" />
+              <h4 className="font-bold text-foreground mb-2">Location</h4>
+              <p className="text-muted-foreground/80 text-sm leading-normal">Lucknow, Uttar Pradesh<br/>India</p>
             </div>
             
-            <div className="flex flex-col items-center md:items-start text-center md:text-left p-4">
-              <Phone className="w-6 h-6 text-primary mb-3.5" />
-              <h4 className="font-bold text-foreground mb-1.5">Phone Call</h4>
-              <a href="tel:+919140432395" className="text-muted-foreground text-sm hover:text-primary transition-colors flex items-center gap-1.5 font-medium">
-                +91 9140432395 <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+            <div className="flex flex-col items-center md:items-start text-center md:text-left p-6 rounded-2xl glass-panel shadow-xl hover-glow-card relative overflow-hidden group">
+              <div className="absolute -right-6 -top-6 w-16 h-16 bg-primary/10 rounded-full blur-lg pointer-events-none" />
+              <Phone className="w-6 h-6 text-primary mb-4 group-hover:scale-110 transition-transform" />
+              <h4 className="font-bold text-foreground mb-2">Phone Call</h4>
+              <a href="tel:+919140432395" className="text-muted-foreground/80 text-sm hover:text-primary transition-colors flex items-center gap-1.5 font-medium group/link">
+                +91 9140432395 <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
               </a>
             </div>
             
-            <div className="flex flex-col items-center md:items-start text-center md:text-left p-4">
-              <Mail className="w-6 h-6 text-primary mb-3.5" />
-              <h4 className="font-bold text-foreground mb-1.5">Direct Email</h4>
-              <a href="mailto:priyanshudwivedi029@gmail.com" className="text-muted-foreground text-sm hover:text-primary transition-colors flex items-center gap-1.5 font-medium break-all">
-                priyanshudwivedi029@gmail.com <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+            <div className="flex flex-col items-center md:items-start text-center md:text-left p-6 rounded-2xl glass-panel shadow-xl hover-glow-card relative overflow-hidden group">
+              <div className="absolute -right-6 -top-6 w-16 h-16 bg-primary/10 rounded-full blur-lg pointer-events-none" />
+              <Mail className="w-6 h-6 text-primary mb-4 group-hover:scale-110 transition-transform" />
+              <h4 className="font-bold text-foreground mb-2">Direct Email</h4>
+              <a href="mailto:priyanshudwivedi029@gmail.com" className="text-muted-foreground/80 text-sm hover:text-primary transition-colors flex items-center gap-1.5 font-medium break-all group/link">
+                priyanshudwivedi029@gmail.com <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
               </a>
             </div>
           </div>

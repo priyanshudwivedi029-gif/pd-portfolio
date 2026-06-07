@@ -65,13 +65,16 @@ export default function Skills() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
-              className="p-6 rounded-2xl bg-card border border-border/80 hover-glow-card flex flex-col items-start text-left shadow-xs"
+              className="p-6 rounded-2xl glass-panel hover-glow-card flex flex-col items-start text-left shadow-2xl relative overflow-hidden group"
             >
-              <div className="flex items-center gap-3 border-b border-border/60 pb-3 w-full mb-5">
-                <div className="p-2 rounded-lg bg-primary/10">
+              {/* Top accent glow line */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/80 via-purple-500/50 to-teal-400/20 opacity-30 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="flex items-center gap-3 border-b border-white/[0.06] pb-3.5 w-full mb-5">
+                <div className="p-2 rounded-lg bg-primary/10 group-hover:scale-105 transition-transform duration-300">
                   {category.icon}
                 </div>
-                <h4 className="text-lg font-bold text-foreground">
+                <h4 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
                   {category.title}
                 </h4>
               </div>
@@ -81,7 +84,7 @@ export default function Skills() {
                   <motion.div
                     key={skill}
                     variants={itemVariants}
-                    className="px-3.5 py-1.5 bg-secondary/60 text-foreground rounded-lg text-sm font-medium border border-border/70 hover:border-primary/50 hover:text-primary transition-all duration-200 cursor-default"
+                    className="px-3.5 py-1.5 bg-white/[0.02] text-foreground/90 rounded-lg text-xs font-semibold border border-white/[0.04] hover:border-primary/40 hover:text-primary hover:bg-primary/[0.02] hover:shadow-[0_0_15px_-3px_rgba(139,92,246,0.2)] transition-all duration-300 cursor-default"
                   >
                     {skill}
                   </motion.div>

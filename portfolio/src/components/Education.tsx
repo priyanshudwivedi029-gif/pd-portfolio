@@ -90,21 +90,24 @@ export default function Education() {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="relative group"
                 >
-                  {/* Timeline Node Dot */}
-                  <div className="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full border-4 border-background bg-primary group-hover:scale-110 transition-transform shadow-xs" />
+                  {/* Timeline Pulse Glow Ring */}
+                  <div className="absolute -left-[32px] top-1.5 w-5 h-5 rounded-full border-4 border-background bg-primary flex items-center justify-center shadow-lg shadow-primary/30">
+                    <span className="absolute w-2 h-2 rounded-full bg-background scale-75" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-30" />
+                  </div>
                   
-                  <div className="p-5 rounded-2xl bg-card border border-border/70 hover:border-primary/20 transition-colors shadow-xs">
+                  <div className="p-5 rounded-2xl glass-panel border border-white/[0.05] hover:border-primary/25 transition-colors shadow-2xl">
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                       <span className="font-mono text-xs text-primary font-bold bg-primary/10 px-2.5 py-1 rounded-full">{item.period}</span>
-                      <span className="text-xs font-semibold text-muted-foreground bg-secondary px-2.5 py-1 rounded-full">{item.score}</span>
+                      <span className="text-xs font-semibold text-muted-foreground bg-white/[0.04] px-2.5 py-1 rounded-full">{item.score}</span>
                     </div>
                     <h5 className="font-bold text-foreground text-lg mb-1">{item.degree}</h5>
                     <p className="text-sm text-muted-foreground mb-4">{item.institution}</p>
                     
                     {/* Coursework list */}
-                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-border/60">
+                    <div className="flex flex-wrap gap-1.5 pt-3.5 border-t border-white/[0.06]">
                       {item.coursework.map((course, cIdx) => (
-                        <span key={cIdx} className="text-[11px] font-medium text-foreground/80 bg-secondary px-2 py-0.5 rounded">
+                        <span key={cIdx} className="text-[11px] font-medium text-foreground/80 bg-white/[0.04] border border-white/[0.05] px-2 py-0.5 rounded">
                           {course}
                         </span>
                       ))}
@@ -131,13 +134,14 @@ export default function Education() {
               </div>
               <div className="space-y-4">
                 {certifications.map((cert, idx) => (
-                  <div key={idx} className="p-5 rounded-2xl bg-card border border-border/80 hover-glow-card shadow-xs">
+                  <div key={idx} className="p-5 rounded-2xl glass-panel border border-white/[0.05] hover-glow-card shadow-2xl relative overflow-hidden group">
+                    <div className="absolute -right-10 -top-10 w-24 h-24 bg-primary/10 rounded-full blur-xl pointer-events-none group-hover:scale-110 transition-transform duration-500" />
                     <h5 className="font-bold text-foreground text-base mb-1.5 flex items-center gap-2">
                       <Sparkles className="w-4 h-4 text-primary shrink-0" />
                       {cert.title}
                     </h5>
                     <div className="text-xs font-semibold text-primary/80 mb-2.5 font-mono">{cert.issuer}</div>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{cert.detail}</p>
+                    <p className="text-xs text-muted-foreground/85 leading-relaxed">{cert.detail}</p>
                   </div>
                 ))}
               </div>
@@ -156,11 +160,11 @@ export default function Education() {
               </div>
               <div className="space-y-4">
                 {leadershipActivities.map((act, idx) => (
-                  <div key={idx} className="p-5 rounded-2xl bg-card border border-border/80 shadow-xs flex gap-4">
-                    <span className="text-primary font-mono text-sm font-bold shrink-0 mt-0.5">0{idx + 1}.</span>
+                  <div key={idx} className="p-5 rounded-2xl glass-panel border border-white/[0.05] hover-glow-card shadow-2xl flex gap-4 group">
+                    <span className="text-primary font-mono text-sm font-bold shrink-0 mt-0.5 group-hover:scale-110 transition-transform">0{idx + 1}.</span>
                     <div>
-                      <h5 className="font-bold text-foreground text-base mb-1">{act.title}</h5>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{act.desc}</p>
+                      <h5 className="font-bold text-foreground text-base mb-1 group-hover:text-primary transition-colors">{act.title}</h5>
+                      <p className="text-xs text-muted-foreground/85 leading-relaxed">{act.desc}</p>
                     </div>
                   </div>
                 ))}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Bot, Cpu, Terminal, ArrowUpRight } from 'lucide-react';
+import { Github, Bot, Cpu, Terminal, ArrowUpRight, Database } from 'lucide-react';
 import { Card, CardDescription, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -17,8 +17,15 @@ const projectsList = [
     ],
     github: 'https://github.com/priyanshudwivedi029-gif/social-media-caption-generator',
     demo: '#',
-    mockupIcon: <Terminal className="w-16 h-16 text-muted-foreground opacity-40 animate-pulse" />,
-    mockupText: 'GUI Engine Active'
+    fileName: 'caption_generator.py',
+    code: `def process_media(file_path):
+    img = Image.open(file_path)
+    features = vision_api.analyze(img)
+    return nlp.generate(features)
+
+# Output Logs:
+[OK] Image parsing complete
+[OK] NLP output: "Code with precision."`
   },
   {
     icon: <Cpu className="w-6 h-6 text-primary" />,
@@ -32,8 +39,15 @@ const projectsList = [
     ],
     github: 'https://github.com/priyanshudwivedi029-gif/task-gateway-api',
     demo: '#',
-    mockupIcon: <Database className="w-16 h-16 text-muted-foreground opacity-40" />,
-    mockupText: 'MySQL Connection: Connected'
+    fileName: 'server.js',
+    code: `app.get("/api/tasks", cache(60), async (req, res) => {
+  const tasks = await db.query("SELECT * FROM tasks");
+  return res.json(tasks);
+});
+
+# Output Logs:
+[SQL] Connection successful on port 3306
+[OK] GET /api/tasks - 200 OK (72ms)`
   }
 ];
 
@@ -61,7 +75,7 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
             >
-              <Card className="overflow-hidden border-border/80 bg-background shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/30 rounded-2xl">
+              <Card className="overflow-hidden border-white/[0.06] bg-background shadow-2xl hover:shadow-black/50 transition-all duration-500 hover:border-primary/30 rounded-2xl">
                 <div className="grid md:grid-cols-12 gap-8 p-6 md:p-8">
                   
                   {/* Copy Details */}
@@ -74,18 +88,18 @@ export default function Projects() {
                       <CardTitle className="text-2xl md:text-3xl font-extrabold mb-4 hover:text-primary transition-colors flex items-center gap-2">
                         {project.title}
                       </CardTitle>
-                      <CardDescription className="text-base text-muted-foreground mb-6 leading-relaxed">
+                      <CardDescription className="text-base text-muted-foreground/90 mb-6 leading-relaxed">
                         {project.description}
                       </CardDescription>
                       
                       {/* STAR Details */}
-                      <div className="space-y-3.5 border-t border-border/60 pt-5 mb-8">
+                      <div className="space-y-3.5 border-t border-white/[0.06] pt-5 mb-8">
                         {project.starDetails.map((detail, idx) => (
                           <div key={idx} className="flex items-start text-sm leading-relaxed">
                             <span className="font-mono text-primary font-bold min-w-[70px] uppercase text-xs tracking-wider mt-0.5">
                               {detail.label}
                             </span>
-                            <span className="text-foreground/90 pl-3 border-l border-border/60">
+                            <span className="text-foreground/90 pl-3 border-l border-white/[0.08]">
                               {detail.text}
                             </span>
                           </div>
@@ -94,12 +108,12 @@ export default function Projects() {
                     </div>
 
                     <div className="flex flex-wrap gap-4 mt-auto pt-4">
-                      <Button variant="outline" size="sm" className="gap-2 rounded-lg text-sm border-border hover:border-primary/40" asChild>
+                      <Button variant="outline" size="sm" className="gap-2 rounded-xl text-sm border-white/[0.08] hover:bg-white/[0.02]" asChild>
                         <a href={project.github} target="_blank" rel="noopener noreferrer">
                           <Github className="w-4 h-4" /> Code Source
                         </a>
                       </Button>
-                      <Button size="sm" className="gap-2 rounded-lg text-sm" asChild>
+                      <Button size="sm" className="gap-2 rounded-xl text-sm bg-primary hover:bg-primary/95 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/25" asChild>
                         <a href={project.demo}>
                           Live Demo <ArrowUpRight className="w-4 h-4" />
                         </a>
@@ -107,16 +121,22 @@ export default function Projects() {
                     </div>
                   </div>
                   
-                  {/* Mockup Preview Panel */}
-                  <div className="md:col-span-5 order-1 md:order-2 bg-secondary/30 rounded-xl border border-border/70 flex flex-col items-center justify-center min-h-[260px] overflow-hidden relative group p-6">
-                    <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors z-0" />
-                    <div className="relative z-10 text-center flex flex-col items-center justify-center">
-                      <div className="p-4 rounded-full bg-background/80 shadow-md border border-border/60 mb-4 group-hover:scale-110 transition-transform duration-300">
-                        {project.mockupIcon}
+                  {/* IDE Mockup Preview Panel */}
+                  <div className="md:col-span-5 order-1 md:order-2 rounded-xl border border-white/[0.06] bg-[#05050a] flex flex-col justify-start min-h-[260px] overflow-hidden relative shadow-inner text-left font-mono">
+                    {/* Header Bar */}
+                    <div className="flex items-center justify-between px-4 py-2.5 bg-black/40 border-b border-white/[0.06]">
+                      <div className="flex gap-1.5">
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
                       </div>
-                      <span className="text-xs font-mono text-muted-foreground tracking-wider uppercase bg-background/50 px-3 py-1 rounded border border-border/50">
-                        {project.mockupText}
-                      </span>
+                      <span className="text-[10px] text-muted-foreground font-mono">{project.fileName}</span>
+                      <div className="w-10" /> {/* Spacer */}
+                    </div>
+                    
+                    {/* Code Editor Body */}
+                    <div className="p-4 overflow-x-auto text-[11px] leading-relaxed text-slate-300 font-mono w-full flex-grow select-none">
+                      <pre className="text-left font-mono whitespace-pre">{project.code}</pre>
                     </div>
                   </div>
                   

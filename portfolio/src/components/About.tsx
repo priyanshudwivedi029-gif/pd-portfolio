@@ -50,13 +50,16 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="p-5 rounded-2xl bg-background border border-border/80 shadow-xs hover-glow-card flex flex-col items-start text-left"
+                className="p-5 rounded-2xl glass-panel relative overflow-hidden shadow-xl hover-glow-card flex flex-col items-start text-left group"
               >
-                <div className="p-2.5 rounded-xl bg-primary/10 mb-4">
+                {/* Left border accent line */}
+                <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-primary to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                <div className="p-2.5 rounded-xl bg-primary/10 mb-4 group-hover:scale-105 transition-transform duration-300">
                   {stat.icon}
                 </div>
-                <h4 className="text-base font-semibold text-foreground mb-1">{stat.title}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{stat.desc}</p>
+                <h4 className="text-base font-bold text-foreground mb-1 group-hover:text-primary transition-colors">{stat.title}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">{stat.desc}</p>
               </motion.div>
             ))}
           </div>
